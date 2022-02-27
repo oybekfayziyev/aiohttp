@@ -88,11 +88,6 @@ class User(Base):
             user = list(map(lambda x: dict(x), conn.execute(query)))
         return user[0]
 
-    async def get_user_events(self, user_id: int):
-
-        async with CreateEngine() as conn:
-            query = alchemy.select([User, Event]).where()
-
 
 class Event(Base):
 
@@ -188,7 +183,7 @@ class Coupon(Base):
             await Event.update_event(event_id)
             coupon_hash = uuid4()
             query = Coupon.__table__.insert().values(
-                user=user_id, event=event_id, hash=coupon_hash
+                user=user_id, event=event_id, hash=str(coupon_hash)
             )
             session = Session(conn)
             trans = session.begin()

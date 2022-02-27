@@ -20,7 +20,7 @@ DATABASE = {
     "PORT": os.environ.get("MYSQL_PORT", 3306),
 }
 
-mysql_url = f'mysql+mysqldb://{DATABASE["USER"]}:{DATABASE["PASSWORD"]}@{DATABASE["HOST"]}/{DATABASE["NAME"]}'
+mysql_url = f'mysql+pymysql://{DATABASE["USER"]}:{DATABASE["PASSWORD"]}@{DATABASE["HOST"]}/{DATABASE["NAME"]}'
 
 
 PASSWORD_HASHING = {
